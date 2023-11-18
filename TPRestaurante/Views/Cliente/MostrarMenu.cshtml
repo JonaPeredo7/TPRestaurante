@@ -1,0 +1,107 @@
+﻿@model List<TPRestaurante.Models.MenusCLS>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Estilos/styleMenu.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Estilos/Hover-master/css/hover.css">
+</head>
+
+<div class="container">
+    <div class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+        <span class="navbar-brand">Categories:</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        All
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <!-- Agrega tus otras categorías aquí -->
+            </ul>
+
+            <form class="form-inline">
+                <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row wow fadeIn">
+        @foreach (var plato in Model)
+        {
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card hvr-grow" data-toggle="tooltip" title="@plato.Descripcion">
+                    <div class="view overlay">
+                        <img src="@plato.Urlimagen" class="card-img-top" alt="">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <div class="card-body text-center">
+                        <h5>
+                            <strong>
+                                @plato.NombrePlato
+                            </strong>
+                        </h5>
+                        <div class="card-body">
+                            <p class="grey-text">@plato.Categoria</p>
+                            <h4 class="font-weight-bold blue-text">
+                                <strong>@String.Format("${0:N2}", plato.Precio)</strong>
+                            </h4>
+                            <button class="btn btn-primary" onclick="agregarAlCarrito('@plato.MenuID', '@plato.NombrePlato', '@plato.Precio')">Agregar al Carrito</button>
+                            <span id="contador-@plato.MenuID">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!--Pagination-->
+    <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+            <!-- Agrega la paginación aquí si es necesario -->
+        </ul>
+    </nav>
+    <!--Pagination-->
+</div>
+
+@section scripts
+{
+    <script>
+        function agregarAlCarrito(menuId, nombrePlato, precio) {
+            // Obtener el contador actual para este plato
+            var contador = parseInt($("#contador-" + menuId).text());
+
+            // Incrementar el contador
+            contador++;
+
+            // Actualizar el contador en la vista
+            $("#contador-" + menuId).text(contador);
+
+            // Llamar a la acción del controlador para agregar al carrito mediante Ajax
+            $.ajax({
+                url: '@Url.Action("AgregarAlCarrito", "Cliente")',
+                type: 'POST',
+                data: { menuId: menuId, cantidad: 1 },
+                success: function (result) {
+                    // Manejar cualquier respuesta del servidor si es necesario
+                },
+                error: function () {
+                    // Manejar errores si es necesario
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            // Activa el tooltip de Bootstrap para mostrar la descripción al colocar el mouse sobre una tarjeta
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}

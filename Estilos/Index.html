@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <title>Menú del Restaurante</title>
+</head>
+<body>
+    <header>
+        <h1>Restaurante Delicioso</h1>
+        <nav>
+            <label for="categoria">Filtrar por Categoría:</label>
+            <select id="categoria">
+                <option value="todas">Todas</option>
+                <option value="entradas">Entradas</option>
+                <option value="platos-principales">Platos Principales</option>
+                <option value="postres">Postres</option>
+                <option value="bebidas">Bebidas</option>
+            </select>
+        </nav>
+    </header>
+
+    <section id="menu-entradas" class="menu-section">
+        <h2>Entradas</h2>
+        <div class="menu-item" data-categoria="entradas">
+            <div class="menu-item-info">
+                <h3>Pan con Ajo</h3>
+                <p>Pan con ajo y mantequilla</p>
+                <p class="precio">$5.99</p>
+            </div>
+            <img src="pan_con_ajo.jpg" alt="Pan con Ajo">
+        </div>
+        <!-- Agrega más elementos según sea necesario -->
+    </section>
+
+    <section id="menu-platos-principales" class="menu-section">
+        <h2>Platos Principales</h2>
+        <div class="menu-item" data-categoria="platos-principales">
+            <div class="menu-item-info">
+                <h3>Lasaña de Carne</h3>
+                <p>Lasaña con carne y salsa de tomate</p>
+                <p class="precio">$12.99</p>
+            </div>
+            <img src="lasana_de_carne.jpg" alt="Lasaña de Carne">
+        </div>
+        <!-- Agrega más elementos según sea necesario -->
+    </section>
+
+    <!-- Agrega secciones para postres y bebidas -->
+
+    <footer>
+        <p>&copy; 2023 Restaurante Delicioso</p>
+    </footer>
+</body>
+</html>

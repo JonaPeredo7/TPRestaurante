@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b3adbf31092a4a58ad3b112b18c31cae" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="Model.Clientes" Width="1.5" PointX="8.5" PointY="2.125" />
+        <EntityTypeShape EntityType="Model.Empleados" Width="1.5" PointX="4" PointY="2.5" />
+        <EntityTypeShape EntityType="Model.Menus" Width="1.5" PointX="6.25" PointY="2" />
+        <EntityTypeShape EntityType="Model.Mesas" Width="1.5" PointX="13" PointY="1.125" />
+        <EntityTypeShape EntityType="Model.Pedidos" Width="1.5" PointX="10.75" PointY="4" />
+        <EntityTypeShape EntityType="Model.Reservas" Width="1.5" PointX="10.75" PointY="1.125" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="1.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.Transacciones" Width="1.5" PointX="6.25" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.Usuarios" Width="1.5" PointX="1.75" PointY="2.875" />
+        <AssociationConnector Association="Model.FK__Pedidos__Cliente__5165187F" />
+        <AssociationConnector Association="Model.FK__Reservas__Client__5441852A" />
+        <AssociationConnector Association="Model.FK_Clientes_Menus" />
+        <AssociationConnector Association="Model.FK_Clientes_Transacciones" />
+        <AssociationConnector Association="Model.FK_Empleados_Usuarios" />
+        <AssociationConnector Association="Model.FK_Menus_Empleados" />
+        <AssociationConnector Association="Model.FK_Menus_Pedidos" />
+        <AssociationConnector Association="Model.FK_Mesas_Reservas" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

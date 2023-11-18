@@ -1,0 +1,68 @@
+﻿@model TPRestaurante.Models.CarritoCLS
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Estilos/StyleCarrito.css">
+    <title>Mostrar Carrito</title>
+    <!-- Agrega aquí tus referencias a estilos y scripts si es necesario -->
+</head>
+<body>
+
+    <div class="carrito-container">
+        <h2>Tu Carrito de Compras</h2>
+
+        @if (Model.Detalles.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre del Plato</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var detalle in Model.Detalles)
+                    {
+                        <tr>
+                            <td>@detalle.NombrePlato</td>
+                            <td>@String.Format("${0:N2}", detalle.Precio)</td>
+                            <td>@detalle.Cantidad</td>
+                            <td>@String.Format("${0:N2}", detalle.Total)</td>
+                            <td class="delete-button">
+                                @Html.ActionLink("Eliminar", "EliminarDelCarrito", new { menuId = detalle.MenuID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                        <td>@String.Format("${0:N2}", Model.Total)</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="continue-shopping">
+                @Html.ActionLink("Continuar Comprando", "MostrarMenu")
+                <!-- Agrega aquí el enlace o botón para iniciar la compra -->
+            </div>
+        }
+        else
+        {
+            <p class="empty-cart-message">No hay elementos en tu carrito.</p>
+            <div class="back-to-menu">
+                @Html.ActionLink("Volver al Menú", "MostrarMenu")
+            </div>
+            
+        }
+    </div>
+
+    <!-- Agrega aquí tus scripts si es necesario -->
+</body>
+</html>
